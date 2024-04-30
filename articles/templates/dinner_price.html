@@ -16,4 +16,11 @@
 <p>맛있겠당</p>
 {% endif %}
 
-{% endblock %}
+<h1> 리뷰 </h1>
+{% for article in articles %}
+<p>글 번호 : {{ article.pk }}</p>
+<p>글 제목 : {{ article.title }}</p>
+<p>글 내용 : {{ article.content }}</p>
+<hr />
+
+{% endfor %}{% endblock %}
