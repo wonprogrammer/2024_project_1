@@ -42,3 +42,11 @@ def create_review(request):
     article.save()
     
     return redirect('/articles/dinner_price/wonder/')
+
+
+def detail(request, pk):
+    article = Article.objects.get(pk=pk)
+    context = {
+        'article' : article,
+    }
+    return render(request, 'datail.html', context)
