@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import random
 from .models import Article
 
@@ -37,8 +37,8 @@ def review(request):
 
 def create_review(request):
     content = request.POST.get('content')
-    print(request.POST)
-    context = {
-        'content' : content,
-    }
-    return render(request, 'review_result.html', context)
+    title = request.POST.get('title')
+    article = Article(title=title, content=content)
+    article.save()
+    
+    return redirect('/articles/dinner_price/wonder/')
