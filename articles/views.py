@@ -18,13 +18,12 @@ def dinner(request, name):
     return render(request, 'dinner.html', context)
 
 
-def dinner_price(request, name):
+def dinner_price(request):
     menus = [{"name":'한식 정식',"price":30000}, {"name":'중식 정식',"price":20000}, {"name":'일식 정식',"price":70000}, {"name":'분식 정식',"price":8000}]
     pick = random.choice(menus)
     articles = Article.objects.all()
     context = {
         'pick' : pick,
-        'name' : name,
         'menus' : menus,
         'articles'  :articles,
     }
@@ -41,7 +40,7 @@ def create_review(request):
     article = Article(title=title, content=content)
     article.save()
     
-    return redirect('/articles/dinner_price/wonder/')
+    return redirect('articles:detail', article.pk)
 
 
 def detail(request, pk):
