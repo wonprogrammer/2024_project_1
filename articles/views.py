@@ -49,3 +49,12 @@ def detail(request, pk):
         'article' : article,
     }
     return render(request, 'datail.html', context)
+
+
+def delete(request, pk):
+    article = Article.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        article.delete()
+    
+    return redirect('articles:dinner_price')

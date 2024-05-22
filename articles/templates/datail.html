@@ -6,6 +6,14 @@
 <p>글 제목 : {{ article.title }}</p>
 <p>글 내용 : {{ article.content }}</p>
 <p>글 작성 시간 : {{ article.created_at|date:"SHORT_DATE_FORMAT" }}</p>
+
+<!-- a 태그는 get method로 동작하기 때문에 delete 동작은 form 태그를 통해 Post로 동작 시켜줘야 함 -->
+<!-- <a href="{% url 'articles:delete' article.pk %}">[리뷰 삭제하기]</a><br /> -->
+
+<form action="{% url 'articles:delete' article.pk %}" method="POST">
+    {% csrf_token %}
+    <button class="btn btn-danger">[DELETE]</button>
+</form>
 <a href="{% url 'articles:dinner_price' %}">[Back]</a>
 <hr />
 
