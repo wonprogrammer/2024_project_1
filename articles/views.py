@@ -58,3 +58,12 @@ def delete(request, pk):
         article.delete()
     
     return redirect('articles:dinner_price')
+
+
+
+def edit(request, pk):
+    article = Article.objects.get(pk=pk)
+    context = {
+        'article' : article,
+    }
+    return render(request, 'edit.html', context)
